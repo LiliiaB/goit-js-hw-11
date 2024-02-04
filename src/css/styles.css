@@ -123,3 +123,13 @@ input:hover {
 input:active {
   border: 1px solid #4e75ff;
 }
+
+.gallery {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
