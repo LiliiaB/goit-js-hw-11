@@ -24,6 +24,7 @@
 
 body {
   margin: 16px;
+  box-sizing: border-box;
 }
 
 .loader {
@@ -36,6 +37,7 @@ body {
   text-indent: -9999em;
   animation: mulShdSpin 1.3s infinite linear;
   transform: translateZ(0);
+  display: none;
 }
 
 @keyframes mulShdSpin {
@@ -128,8 +130,28 @@ input:active {
   margin-top: 24px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 16px;
+}
+
+.item-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.list-item {
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid #9fa0a5;
+}
+
+.container {
+  display: flex;
+  text-align: center;
+  padding: 8px;
+  justify-content: center;
 }

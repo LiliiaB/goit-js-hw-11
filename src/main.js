@@ -9,10 +9,12 @@ const formEl = document.querySelector('form');
 const btnEl = document.querySelector('button');
 const inputEl = document.querySelector('input');
 const listEl = document.querySelector('ul');
+const loaderEl = document.querySelector('.loader');
 
 formEl.addEventListener('submit', evt => {
   evt.preventDefault();
   listEl.innerHTML = '';
+  showLoader();
   const searchedItem = inputEl.value;
 
   const API_KEY = '42152818-0d69fd49112a74751654c42bc';
@@ -36,9 +38,9 @@ formEl.addEventListener('submit', evt => {
       } else {
         const markup = data.hits
           .map(data => {
-            return `<li class="list-item"><a href="${data.webformatURL}">
-          <img class="item-img" src="${data.webformatURL}" alt="${data.tags}" width="360" height="200"></a><p><b>Likes: </b>${data.likes}</p><p><b>Views: </b>${data.views}</p><p><b>Comments: </b>${data.comments}</p><p><b>Downloads: </b>${data.downloads}</p>
-          </li>`;
+            return `<li class="list-item"><a href="${data.largeImageURL}">
+          <img class="item-img" src="${data.webformatURL}" alt="${data.tags}" ></a><div class="container"><p><b>Likes: </b><br>${data.likes}</p><p><b>Views: </b><br>${data.views}</p><p><b>Comments: </b><br>${data.comments}</p><p><b>Downloads: </b><br>${data.downloads}</p>
+          </li></div>`;
           })
           .join('');
 
@@ -48,6 +50,7 @@ formEl.addEventListener('submit', evt => {
           captions: true,
           captionSelector: 'img',
           captionPosition: 'bottom',
+          captionsData: 'alt',
         });
         lightbox.on('show.simplelightbox');
         lightbox.refresh();
@@ -55,5 +58,15 @@ formEl.addEventListener('submit', evt => {
     })
     .catch(error => {
       console.log(error);
+    })
+    .finally(() => {
+      hideLoader();
     });
 });
+
+function showLoader() {
+  loaderEl.style.display = 'flex';
+}
+function hideLoader() {
+  loaderEl.style.display = 'none';
+}
