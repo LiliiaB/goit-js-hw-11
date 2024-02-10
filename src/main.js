@@ -11,6 +11,13 @@ const inputEl = document.querySelector('input');
 const listEl = document.querySelector('ul');
 const loaderEl = document.querySelector('.loader');
 
+function showLoader() {
+  loaderEl.style.display = 'flex';
+}
+function hideLoader() {
+  loaderEl.style.display = 'none';
+}
+
 formEl.addEventListener('submit', evt => {
   evt.preventDefault();
   listEl.innerHTML = '';
@@ -54,19 +61,10 @@ formEl.addEventListener('submit', evt => {
         });
         lightbox.on('show.simplelightbox');
         lightbox.refresh();
+        hideLoader();
       }
     })
     .catch(error => {
       console.log(error);
-    })
-    .finally(() => {
-      hideLoader();
     });
 });
-
-function showLoader() {
-  loaderEl.style.display = 'flex';
-}
-function hideLoader() {
-  loaderEl.style.display = 'none';
-}

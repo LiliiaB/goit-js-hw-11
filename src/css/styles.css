@@ -28,7 +28,7 @@ body {
 }
 
 .loader {
-  color: #fff;
+  color: #8184f0;
   font-size: 10px;
   width: 1em;
   height: 1em;
@@ -38,6 +38,8 @@ body {
   animation: mulShdSpin 1.3s infinite linear;
   transform: translateZ(0);
   display: none;
+  margin: 0 auto;
+  margin-top: 16px;
 }
 
 @keyframes mulShdSpin {
