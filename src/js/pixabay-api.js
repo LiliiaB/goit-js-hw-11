@@ -5,7 +5,7 @@ import { refs } from './render-functions';
 import { showLightBox } from './render-functions';
 
 export function fetchData() {
-  const searchedItem = refs.inputEl.value;
+  const searchedItem = refs.inputEl.value.trim();
   const API_KEY = '42152818-0d69fd49112a74751654c42bc';
   fetch(
     `https://pixabay.com/api/?key=${API_KEY}&q=${searchedItem}&image_type=photo&orientation=horizontal&safesearch=true`
@@ -34,10 +34,12 @@ export function fetchData() {
 
         refs.listEl.insertAdjacentHTML('beforeend', markup);
         showLightBox();
-        hideLoader();
       }
     })
     .catch(error => {
       console.log(error);
+    })
+    .finally(() => {
+      hideLoader();
     });
 }
